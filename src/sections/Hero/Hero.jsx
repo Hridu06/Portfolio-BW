@@ -1,65 +1,86 @@
-import { useState } from 'react'
-import heroImage from '../../assets/Hero.png'
-import logo from '../../assets/logo.png'
-import './Hero.css'
+import "./Hero.css";
+import Navbar from "../../components/Navbar/Navbar";
+import Scene from "./Scene/Scene";
+import FloatingTech from "./FloatingTech";
 
-const technologies = [
-  { className: 'html', mark: '5', label: 'HTML' },
-  { className: 'css', mark: '3', label: 'CSS' },
-  { className: 'js', mark: 'JS', label: 'JavaScript' },
-  { className: 'react', mark: '⚛', label: 'React' },
-  { className: 'figma', mark: '●', label: 'Figma' },
-]
+import HeroImage from "../../assets/Hero.png";
 
-function Hero() {
-  const [menuOpen, setMenuOpen] = useState(false)
+import {
+  FaGithub,
+  FaLinkedin,
+  FaFacebook,
+  FaArrowRight,
+} from "react-icons/fa";
 
+export default function Hero() {
   return (
-    <>
-      <header className="topbar">
-        <a className="brand" href="#home" aria-label="Hriday home">
-          <img src={logo} alt="Hriday" />
-        </a>
-        <button className="menu-button" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
-          <span></span><span></span><span></span>
-        </button>
-        {menuOpen && (
-          <nav className="menu" aria-label="Main navigation">
-            <a href="#home" onClick={() => setMenuOpen(false)}>Home</a>
-            <a href="#work" onClick={() => setMenuOpen(false)}>Work</a>
-            <a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a>
-          </nav>
-        )}
-      </header>
+    <section className="hero" id="home">
 
-      <section className="hero-section" id="home">
-        <div className="ambient-glow" aria-hidden="true"></div>
+      {/* Background */}
+      <Scene />
+
+      {/* Navbar */}
+      <Navbar />
+
+      {/* Hero Content */}
+      <div className="hero-layout">
+
         <div className="hero-copy">
-          <p className="eyebrow"><span></span> 👋 HELLO, I'M</p>
-          <h1><span>HRIDAY</span><strong>AHMED</strong></h1>
-          <p className="intro">Experienced Web Developer focused on responsive design, high performance, creative user experiences, and modern UI/UX solutions for clients worldwide.</p>
+          <p className="eyebrow">
+            <span />Frontend Developer
+          </p>
+
+          <h1>
+            Sabbir <span>Hossain</span>
+          </h1>
+
+          <p className="hero-description">
+            I build modern React experiences with motion, performance,
+            and polished interfaces for ambitious digital brands.
+          </p>
+
           <div className="hero-actions">
-            <a className="button primary" href="#work"><span>▣</span> MY PORTFOLIO</a>
-            <a className="button secondary" href="#contact"><span>↓</span> HIRE ME</a>
+            <a href="#capabilities" className="primary-action">
+              View Portfolio
+              <span>
+                <FaArrowRight />
+              </span>
+            </a>
+
+            <a href="/cv.pdf" className="secondary-action" download>
+              Download CV
+            </a>
+          </div>
+
+          <div className="hero-social">
+            <a href="#">
+              <FaGithub />
+            </a>
+            <a href="#">
+              <FaLinkedin />
+            </a>
+            <a href="#">
+              <FaFacebook />
+            </a>
           </div>
         </div>
 
-        <p className="ghost-name" aria-hidden="true">HRIDAY</p>
-        <div className="portrait-wrap">
-          <img src={heroImage} alt="Hriday Ahmed" className="portrait" />
-        </div>
+        <div className="portrait-area">
+          <p className="background-name">SABBIR</p>
+          <div className="portrait-glow" />
+          <img
+            src={HeroImage}
+            alt="Sabbir Hossain"
+            className="portrait"
+          />
 
-        <div className="tech-stack" aria-label="Technology stack">
-          {technologies.map((tech) => (
-            <div className={`tech-card ${tech.className}`} key={tech.label}>
-              <span className="tech-mark">{tech.mark}</span>
-              <small>{tech.label}</small>
-            </div>
-          ))}
+          <p className="portrait-note">
+            Frontend Developer — Bangladesh · Worldwide
+          </p>
+
+          <FloatingTech />
         </div>
-      </section>
-    </>
-  )
+      </div>
+    </section>
+  );
 }
-
-export default Hero

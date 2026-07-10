@@ -1,0 +1,104 @@
+/* ==========================================
+   HERO SCENE
+========================================== */
+
+.hero-scene {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* ==========================================
+   THREE CANVAS
+========================================== */
+
+.hero-scene canvas {
+  width: 100% !important;
+  height: 100% !important;
+
+  display: block;
+
+  background: transparent;
+}
+
+/* ==========================================
+   OPTIONAL DARK OVERLAY
+========================================== */
+
+.hero-scene::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: radial-gradient(
+      circle at center,
+      rgba(57,255,136,.08),
+      rgba(5,5,5,.15) 45%,
+      rgba(5,5,5,.55) 75%,
+      #050505 100%
+  );
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+/* ==========================================
+   GLOW VIGNETTE
+========================================== */
+
+.hero-scene::after {
+
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  background:
+      radial-gradient(
+      circle at 50% 55%,
+      rgba(57,255,136,.10),
+      transparent 60%
+      );
+
+  mix-blend-mode: screen;
+
+  pointer-events: none;
+
+  z-index: 2;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:991px){
+
+.hero-scene::before{
+
+background:
+
+radial-gradient(
+
+circle,
+
+rgba(57,255,136,.06),
+
+#050505 75%
+
+);
+
+}
+
+}

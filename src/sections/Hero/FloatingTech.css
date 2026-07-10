@@ -1,0 +1,65 @@
+.tool-grid {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.tool-card {
+  --tool-scale: 1;
+  position: absolute;
+  width: 86px;
+  min-height: 104px;
+  display: grid;
+  place-content: center;
+  gap: 9px;
+  border: 1px solid rgba(215, 255, 0, .35);
+  border-radius: 10px;
+  background: rgba(8, 11, 9, .88);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, .35);
+  text-align: center;
+  animation: float 5s ease-in-out infinite;
+}
+
+.tool-card b {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 31px;
+  line-height: 1;
+  color: inherit;
+}
+
+.tool-card span {
+  color: #f3f5e9;
+  font-size: .68rem;
+  font-weight: 800;
+}
+
+.orange { top: 7%; left: 18%; animation-delay: -.7s; }
+.orange b { color: #ff6b35; }
+
+.blue { top: 38%; left: 48%; animation-delay: -3.1s; }
+.blue b { color: #39b9f2; }
+
+.cyan { top: 20%; right: 12%; animation-delay: -1.6s; }
+.cyan b { color: #57dfff; }
+
+.figma { bottom: 14%; left: 16%; animation-delay: -4.3s; }
+.figma b { color: #f24e1e; }
+
+@keyframes float {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-1deg) scale(var(--tool-scale)); }
+  50% { transform: translate3d(0, -15px, 0) rotate(1deg) scale(var(--tool-scale)); }
+}
+
+@media (max-width: 991px) {
+  .tool-card { width: 74px; min-height: 90px; }
+  .tool-card span { font-size: .62rem; }
+  .orange { top: 4%; left: 14%; }
+  .blue { top: 34%; left: 44%; }
+  .cyan { top: 16%; right: 6%; }
+  .figma { bottom: 10%; left: 18%; }
+}
+
+@media (max-width: 768px) {
+  .tool-grid { display: none; }
+}
